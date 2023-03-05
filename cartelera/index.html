@@ -79,7 +79,7 @@
 			<h1 class="display-1 fw-bold text-white">Cartelera de estrenos 2023</h1>
 			<div class="col-lg-6 py-3 mx-auto">
 				<p class="fs-4 pb-3">Conoce la fecha de estreno de los títulos más destacados y esperados de este año y no te pierdas de lo mejor del entretenimiento que tanto te gusta.</p>
-				<span class="fs-6">¡No te olvides de guardar la página como favorito y revisar frecuentemente ya que el listado está en constante actualización!</span>
+				<span class="fs-6">¡No te olvides de guardar la página como favorito y revisar con frecuencia ya que el listado está en constante actualización!</span>
 			</div>
 		</div>
 		<div class="col-xxl-8 mx-auto">
@@ -2477,7 +2477,8 @@
 				delegate: 'a', // child items selector, by clicking on it popup will open
 				type: 'iframe',
 				iframe: {
-					markup: '<div class="mfp-iframe-scaler">' +
+					markup:
+						'<div class="mfp-iframe-scaler">' +
 						'<div class="mfp-close"></div>' +
 						'<iframe class="mfp-iframe" width="560" height="315" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>' +
 						'</div>',
@@ -2492,7 +2493,8 @@
 				mainClass: 'mfp-fade',
 				removalDelay: 160,
 				preloader: false,
-				fixedContentPos: false
+				fixedContentPos: true,
+				overflowY: 'hidden'
 			});
 		});
 	</script>
