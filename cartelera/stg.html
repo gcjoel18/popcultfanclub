@@ -1260,31 +1260,29 @@
 		
 			$(document).ready(function() {
 			
-				var containerEl = document.querySelector('.titles');
-				
-				// ## 1 - hide alert message by deafult 
 				var noItemsFoundMessage = document.getElementById("noItemsFoundMessage");
 				noItemsFoundMessage.style.display = "none";
 
 				//  MIXITUP 3 plugin settings
-				    mixitup('.titles', {   
-					  // ## 2 - callbacks onMixEnd 
-					 callbacks: {
-					 onMixEnd: function(state){
-					   // ## 3 - hasFailed true? show alert
-					   if(state.hasFailed){  
-					      noItemsFoundMessage.style.display = "block";
-					      alert("No items found");
-					   }
-					   // ## 3 - hasFailed false? hide alert
-					   else{
-					      noItemsFoundMessage.style.display = "none";
-					      alert("Items found");
-					   }
-					 },
+				mixitup('.titles', {   
+					callbacks: {
+						onMixEnd: function(state){
+							if(state.hasFailed){  
+								noItemsFoundMessage.style.display = "block";
+									document.getElementById("hasFailed").innerHTML = "True - no targets could be found matching the filter";
 
-				      }, //end of callback
+							}
+							else{
+								noItemsFoundMessage.style.display = "none";
+									document.getElementById("hasFailed").innerHTML = "False -  items found";
+
+							}
+						},
+
+					}, //end of callback
+				});
 				
+				var containerEl = document.querySelector('.titles');
 				var mixer = mixitup(containerEl);
 				
 				//var mixer = mixitup(containerEl, {
