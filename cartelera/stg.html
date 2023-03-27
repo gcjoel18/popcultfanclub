@@ -323,6 +323,7 @@
 					<div class="col mix categoria-deportes fecha-junio" data-src="data/deportes/UEFA-Champions-League.html"></div>
 					<div class="col mix categoria-deportes fecha-julio" data-src="data/deportes/FIFA-Womens-World-Cup.html"></div>
 					<div class="col mix categoria-eventos fecha-agosto" data-src="data/eventos/comiccon.html"></div>
+					<div id="noItemsFoundMessage"><h1>No hay títulos con los criterios seleccionados.</h1></div>
 				</div>
 			</div>
 		</main>
@@ -1260,6 +1261,28 @@
 				var containerEl = document.querySelector('.titles');
 				
 				var mixer = mixitup(containerEl);
+				
+				var noItemsFoundMessage = document.getElementById("noItemsFoundMessage");
+				noItemsFoundMessage.style.display = "none";
+
+				//  MIXITUP 3 plugin settings
+				    mixitup('.titles', {   
+					  // ## 2 - callbacks onMixEnd 
+					 callbacks: {
+					 onMixEnd: function(state){
+					   // ## 3 - hasFailed true? show alert
+					   if(state.hasFailed){  
+					      noItemsFoundMessage.style.display = "block";
+					      alert("No items found");
+					   }
+					   // ## 3 - hasFailed false? hide alert
+					   else{
+					      noItemsFoundMessage.style.display = "none";
+					      alert("Items found");
+					   }
+					 },
+
+				      }, //end of callback
 				
 				//var mixer = mixitup(containerEl, {
 				//	controls: {
