@@ -1257,30 +1257,29 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/mixitup/3.3.1/mixitup.min.js"></script>
 		
 		<script>
-		
 			$(document).ready(function() {
 			
-				var noItemsFoundMessage = document.getElementById("noItemsFoundMessage");
-				noItemsFoundMessage.style.display = "none";
-
+				//var noItemsFoundMessage = document.getElementById("noItemsFoundMessage");
+				//noItemsFoundMessage.style.display = "none";
+				//
 				//  MIXITUP 3 plugin settings
-				mixitup('.titles', {   
-					callbacks: {
-						onMixEnd: function(state){
-							if(state.hasFailed){  
-								noItemsFoundMessage.style.display = "block";
-									document.getElementById("hasFailed").innerHTML = "True - no targets could be found matching the filter";
-
-							}
-							else{
-								noItemsFoundMessage.style.display = "none";
-									document.getElementById("hasFailed").innerHTML = "False -  items found";
-
-							}
-						},
-
-					}, //end of callback
-				});
+				//mixitup('.titles', {   
+				//	callbacks: {
+				//		onMixEnd: function(state){
+				//			if(state.hasFailed){  
+				//				noItemsFoundMessage.style.display = "block";
+				//					document.getElementById("hasFailed").innerHTML = "True - no targets could be found matching the filter";
+				//
+				//			}
+				//			else{
+				//				noItemsFoundMessage.style.display = "none";
+				//					document.getElementById("hasFailed").innerHTML = "False -  items found";
+				//
+				//			}
+				//		},
+				//
+				//	}, //end of callback
+				//});
 				
 				var containerEl = document.querySelector('.titles');
 				var mixer = mixitup(containerEl);
