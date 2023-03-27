@@ -6,7 +6,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 				
 		<!-- Bootstrap CSS -->
-		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
 		
 		<!-- Bootstrap Icons -->
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
@@ -17,6 +17,7 @@
 		<title>Cartelera de Estrenos 2023</title>
 		
 		<style>
+		
 			.mfp-bg {
 				z-index: 9998;
 				background: #000000;
@@ -30,7 +31,7 @@
 				opacity: 0.9;
 			}
 			
-			.accordion .card .modal a {
+			.card .modal a {
 				color: red;
 			}
 			
@@ -49,15 +50,12 @@
 				height: auto;
 			}
 			
-			/*
-			.nav-tabs {
+			.list-group-item i {
 				display: none;
 			}
-			*/
 			
-			.nav-link:hover {
-				background: #FFFFFF;
-				border-bottom: 0;
+			.list-group-item.active i {
+				display: inline-block;
 			}
 
 			/* Small devices (landscape phones, 576px and up) */
@@ -65,14 +63,6 @@
 				.card-img-top {
 					height: 57vw;
 				}
-				/*
-				.nav-tabs {
-					display: flex;
-				}
-				.nav-pills {
-					display: none;
-				}
-				*/
 			}
 			/* Medium devices (tablets, 768px and up) */
 			@media (min-width: 768px) {
@@ -155,7 +145,201 @@
 			
 		</style>
 	</head>
-	<body class="bg-dark text-center">
+	<body class="text-center">
+		<header class="text-bg-dark">
+			<div class="container py-5"
+				<div class="row py-lg-5">
+					<div class="col-lg-6 col-md-8 mx-auto">
+						<h1 class="display-5 fw-bold">Cartelera de estrenos 2023</h1>
+						<p class="lead py-3">Conoce la fecha de estreno de los títulos más destacados y esperados de este año y no te pierdas de lo mejor del entretenimiento que tanto te gusta.</p><p>
+						<button class="btn btn-outline-secondary btn-lg p-3 fs-6" disabled type="button">¡No te olvides de guardar la página como favorito y revisar con frecuencia ya que el listado está en constante actualización!</button>
+					</div>
+				</div>
+			</div>
+		</header>
+		
+		<!--
+		<section class="text-bg-dark pt-3 px-3 pt-md-5 px-md-5 text-center">
+			<div class="my-3 py-3">
+				<h2 class="display-5">Cartelera de estrenos 2023</h2>
+				<p class="lead">Conoce la fecha de estreno de los títulos más destacados y esperados de este año y no te pierdas de lo mejor del entretenimiento que tanto te gusta.</p>
+			</div>
+		</section>
+		-->
+		
+		<nav class="text-bg-dark sticky-top py-2">
+			<div class="col-lg-6 col-md-8 mx-auto">
+				<!-- Button trigger modal -->
+				<div class="d-flex flex-sm-row flex-column mx-3">
+					<div class="p-2">
+						<button type="button" class="btn btn-dark btn-lg" disabled>Filtro:</button>
+					</div>
+					<div class="p-2 flex-grow-1">
+						<button type="button" class="btn btn-primary btn-lg w-100 dropdown-toggle" data-bs-toggle="modal" data-bs-target="#CategoryModal">Categoría</button>
+					</div>
+					<div class="p-2 flex-grow-1">
+						<button type="button" class="btn btn-primary btn-lg w-100 dropdown-toggle" data-bs-toggle="modal" data-bs-target="#DateModal">Mes de estreno</button>
+					</div>
+				</div>
+				
+				
+				<nav class="nav nav-pills flex-column flex-sm-row gap-2 py-2">
+				</nav>
+			</div>
+		</nav>
+		
+		<!-- Category Modal -->
+		<div class="modal fade" id="CategoryModal" tabindex="-1" aria-labelledby="CategoryModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-sm modal-dialog-centered">
+				<div class="modal-content">
+					<div class="modal-header flex-column bg-body-secondary">
+						<h5 class="modal-title">Categoría</h5>
+					</div>
+					
+					<div class="list-group list-group-flush">
+						<button type="button" class="list-group-item list-group-item-action border-dark-subtle fw-bold text-uppercase position-relative" data-toggle=".categoria-anime-series">Anime (Series)<i class="bi bi-check2 position-absolute end-0 me-3"></i></button>
+						<button type="button" class="list-group-item list-group-item-action border-dark-subtle fw-bold text-uppercase position-relative" data-toggle=".categoria-anime-peliculas">Anime (Películas)<i class="bi bi-check2 position-absolute end-0 me-3"></i></button>
+						<button type="button" class="list-group-item list-group-item-action border-dark-subtle fw-bold text-uppercase position-relative" data-toggle=".categoria-series">Series<i class="bi bi-check2 position-absolute end-0 me-3"></i></button>
+						<button type="button" class="list-group-item list-group-item-action border-dark-subtle fw-bold text-uppercase position-relative" data-toggle=".categoria-peliculas">Películas<i class="bi bi-check2 position-absolute end-0 me-3"></i></button>
+						<button type="button" class="list-group-item list-group-item-action border-dark-subtle fw-bold text-uppercase position-relative" data-toggle=".categoria-videojuegos">Videojuegos<i class="bi bi-check2 position-absolute end-0 me-3"></i></button>
+						<button type="button" class="list-group-item list-group-item-action border-dark-subtle fw-bold text-uppercase position-relative" data-toggle=".categoria-deportes">Deportes<i class="bi bi-check2 position-absolute end-0 me-3"></i></button>
+						<button type="button" class="list-group-item list-group-item-action border-dark-subtle fw-bold text-uppercase position-relative" data-toggle=".categoria-eventos">Eventos<i class="bi bi-check2 position-absolute end-0 me-3"></i></button>
+					</div>
+					<div class="modal-footer nav-fill p-3 bg-body-secondary">
+						<button type="button" class="btn btn-primary nav-item" data-bs-dismiss="modal">OK</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<!-- Date Modal -->
+		<div class="modal fade" id="DateModal" tabindex="-1" aria-labelledby="DateModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-sm modal-dialog-centered">
+				<div class="modal-content">
+					<div class="modal-header flex-column bg-body-secondary">
+						<h5 class="modal-title">Mes de estreno</h5>
+					</div>
+					
+					<div class="list-group list-group-flush">
+						<button type="button" class="list-group-item list-group-item-action border-dark-subtle fw-bold text-uppercase position-relative" data-toggle=".fecha-ya-disponible">Ya Disponible<i class="bi bi-check2 position-absolute end-0 me-3"></i></button>
+						<button type="button" class="list-group-item list-group-item-action border-dark-subtle fw-bold text-uppercase position-relative" data-toggle=".fecha-en-emision">En emisión<i class="bi bi-check2 position-absolute end-0 me-3"></i></button>
+						<button type="button" class="list-group-item list-group-item-action border-dark-subtle fw-bold text-uppercase position-relative" data-toggle=".fecha-marzo">Marzo<i class="bi bi-check2 position-absolute end-0 me-3"></i></button>
+						<button type="button" class="list-group-item list-group-item-action border-dark-subtle fw-bold text-uppercase position-relative" data-toggle=".fecha-abril">Abril<i class="bi bi-check2 position-absolute end-0 me-3"></i></button>
+						<button type="button" class="list-group-item list-group-item-action border-dark-subtle fw-bold text-uppercase position-relative" data-toggle=".fecha-mayo">Mayo<i class="bi bi-check2 position-absolute end-0 me-3"></i></button>
+						<button type="button" class="list-group-item list-group-item-action border-dark-subtle fw-bold text-uppercase position-relative" data-toggle=".fecha-junio">Junio<i class="bi bi-check2 position-absolute end-0 me-3"></i></button>
+						<button type="button" class="list-group-item list-group-item-action border-dark-subtle fw-bold text-uppercase position-relative" data-toggle=".fecha-julio">Julio<i class="bi bi-check2 position-absolute end-0 me-3"></i></button>
+						<button type="button" class="list-group-item list-group-item-action border-dark-subtle fw-bold text-uppercase position-relative" data-toggle=".fecha-agosto">Agosto<i class="bi bi-check2 position-absolute end-0 me-3"></i></button>
+						<button type="button" class="list-group-item list-group-item-action border-dark-subtle fw-bold text-uppercase position-relative" data-toggle=".fecha-septiembre">Septiembre<i class="bi bi-check2 position-absolute end-0 me-3"></i></button>
+						<button type="button" class="list-group-item list-group-item-action border-dark-subtle fw-bold text-uppercase position-relative" data-toggle=".fecha-octubre">Octubre<i class="bi bi-check2 position-absolute end-0 me-3"></i></button>
+						<button type="button" class="list-group-item list-group-item-action border-dark-subtle fw-bold text-uppercase position-relative" data-toggle=".fecha-noviembre">Noviembre<i class="bi bi-check2 position-absolute end-0 me-3"></i></button>
+						<button type="button" class="list-group-item list-group-item-action border-dark-subtle fw-bold text-uppercase position-relative" data-toggle=".fecha-diciembre">Diciembre<i class="bi bi-check2 position-absolute end-0 me-3"></i></button>
+						<button type="button" class="list-group-item list-group-item-action border-dark-subtle fw-bold text-uppercase position-relative" data-toggle=".fecha-pronto">Pronto<i class="bi bi-check2 position-absolute end-0 me-3"></i></button>
+					</div>
+					<div class="modal-footer nav-fill p-3 bg-body-secondary">
+						<button type="button" class="btn btn-primary nav-item" data-bs-dismiss="modal">OK</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<main class="album py-5 col-xxl-8 mx-auto">
+			<div class="accordion-body">
+				<div class="titles row row-cols-2 row-cols-md-4 row-cols-lg-6 g-3 text-center lh-1">
+					<div class="col mix categoria-anime-series fecha-ya-disponible" data-src="data/anime-series/Shingeki-no-Kyojin-1.html"></div>
+					<div class="col mix categoria-anime-series fecha-abril" data-src="data/anime-series/Edens-Zero.html"></div>
+					<div class="col mix categoria-anime-series fecha-abril" data-src="data/anime-series/The-Dangers-in-My-Heart.html"></div>
+					<div class="col mix categoria-anime-series fecha-abril" data-src="data/anime-series/Heavenly-Delusion.html"></div>
+					<div class="col mix categoria-anime-series fecha-abril" data-src="data/anime-series/My-Love-Story-With-Yamada-kun-at-Lv999.html"></div>
+					<div class="col mix categoria-anime-series fecha-abril" data-src="data/anime-series/In-Another-World-With-My-Smartphone.html"></div>
+					<div class="col mix categoria-anime-series fecha-abril" data-src="data/anime-series/Skip-and-Loafer.html"></div>
+					<div class="col mix categoria-anime-series fecha-abril" data-src="data/anime-series/Konosuba-An-Explosion-on-This-Wonderful-World.html"></div>
+					<div class="col mix categoria-anime-series fecha-abril" data-src="data/anime-series/The-Idolmaster-Cinderella-Girls-U149.html"></div>
+					<div class="col mix categoria-anime-series fecha-abril" data-src="data/anime-series/The-Ancient-Magus-Bride.html"></div>
+					<div class="col mix categoria-anime-series fecha-abril" data-src="data/anime-series/The-Legendary-Hero-Is-Dead.html"></div>
+					<div class="col mix categoria-anime-series fecha-abril" data-src="data/anime-series/Opus-Colors.html"></div>
+					<div class="col mix categoria-anime-series fecha-abril" data-src="data/anime-series/Too-Cute-Crisis.html"></div>
+					<div class="col mix categoria-anime-series fecha-abril" data-src="data/anime-series/My-One-Hit-Kill-Sister.html"></div>
+					<div class="col mix categoria-anime-series fecha-abril" data-src="data/anime-series/Demon-Slayer-Swordsmith-Village-Arc.html"></div>
+					<div class="col mix categoria-anime-series fecha-abril" data-src="data/anime-series/Blue-Orchestra.html"></div>
+					<div class="col mix categoria-anime-series fecha-abril" data-src="data/anime-series/A-Galaxy-Next-Door.html"></div>
+					<div class="col mix categoria-anime-series fecha-abril" data-src="data/anime-series/Insomniacs-After-School.html"></div>
+					<div class="col mix categoria-anime-series fecha-abril" data-src="data/anime-series/Dr-Stone.html"></div>
+					<div class="col mix categoria-anime-series fecha-abril" data-src="data/anime-series/Mashle.html"></div>
+					<div class="col mix categoria-anime-series fecha-abril" data-src="data/anime-series/My-Home-Hero.html"></div>
+					<div class="col mix categoria-anime-series fecha-abril" data-src="data/anime-series/Sacrificial-Princess-and-the-King-of-Beasts.html"></div>
+					<div class="col mix categoria-anime-series fecha-abril" data-src="data/anime-series/Goddess-Cafe-Terrace.html"></div>
+					<div class="col mix categoria-anime-series fecha-abril" data-src="data/anime-series/Mahou-Shoujo-Magical-Destroyers.html"></div>
+					<div class="col mix categoria-anime-series fecha-julio" data-src="data/anime-series/The-Duke-of-Death-and-His-Maid.html"></div>
+					<div class="col mix categoria-anime-series fecha-julio" data-src="data/anime-series/The-Masterful-Cat-Is-Depressed-Again-Today.html"></div>
+					<div class="col mix categoria-anime-series fecha-julio" data-src="data/anime-series/Saint-Cecilia-and-Pastor-Lawrence.html"></div>
+					<div class="col mix categoria-anime-series fecha-octubre" data-src="data/anime-series/The-Idolmaster-Million-Live.html"></div>
+					<div class="col mix categoria-anime-series fecha-octubre" data-src="data/anime-series/Under-Ninja.html"></div>
+					<div class="col mix categoria-anime-series fecha-pronto" data-src="data/anime-series/Ultraman.html"></div>
+					<div class="col mix categoria-anime-series fecha-pronto" data-src="data/anime-series/Witch-on-the-Holy-Night.html"></div>
+					<div class="col mix categoria-anime-series fecha-pronto" data-src="data/anime-series/Our-Last-Crusade-or-the-Rise-of-a-New-World.html"></div>
+					<div class="col mix categoria-anime-series fecha-pronto" data-src="data/anime-series/Konosuba-Gods-Blessing-on-This-Wonderful-World-3.html"></div>
+					<div class="col mix categoria-anime-series fecha-pronto" data-src="data/anime-series/Kengan-Ashura.html"></div>
+					<div class="col mix categoria-anime-series fecha-pronto" data-src="data/anime-series/Tearmoon-Empire-Story.html"></div>
+					<div class="col mix categoria-anime-series fecha-pronto" data-src="data/anime-series/Am-I-Actually-the-Strongest.html"></div>
+					<div class="col mix categoria-anime-series fecha-pronto" data-src="data/anime-series/The-Saints-Magic-Power-Is-Omnipotent.html"></div>
+					<div class="col mix categoria-anime-series fecha-pronto" data-src="data/anime-series/Cute-Executive-Officer-R.html"></div>
+					<div class="col mix categoria-anime-series fecha-pronto" data-src="data/anime-series/I-Shall-Survive-Using-Potions.html"></div>
+					<div class="col mix categoria-anime-series fecha-pronto" data-src="data/anime-series/Shingeki-no-Kyojin-2.html"></div>
+					<div class="col mix categoria-anime-series fecha-pronto" data-src="data/anime-series/Rurouni-Kenshin.html"></div>
+					<div class="col mix categoria-anime-series fecha-pronto" data-src="data/anime-series/Undead-Unluck.html"></div>
+					<div class="col mix categoria-anime-series fecha-pronto" data-src="data/anime-series/Shangri-La-Frontier.html"></div>
+					<div class="col mix categoria-anime-series fecha-pronto" data-src="data/anime-series/Solo-Leveling.html"></div>
+					<div class="col mix categoria-anime-series fecha-pronto" data-src="data/anime-series/Ragna-Crimson.html"></div>
+					<div class="col mix categoria-anime-series fecha-pronto" data-src="data/anime-series/FLCL-Grunge.html"></div>
+					<div class="col mix categoria-anime-series fecha-pronto" data-src="data/anime-series/FLCL-Shoegaze.html"></div>
+					<div class="col mix categoria-anime-series fecha-pronto" data-src="data/anime-series/Dark-Gathering.html"></div>
+					<div class="col mix categoria-anime-series fecha-pronto" data-src="data/anime-series/Classroom-for-Heroes.html"></div>
+					<div class="col mix categoria-anime-series fecha-pronto" data-src="data/anime-series/The-Devil-is-a-Part-Timer.html"></div>
+					<div class="col mix categoria-anime-series fecha-pronto" data-src="data/anime-series/Mushoku-Tensei-Jobless-Reincarnation.html"></div>	
+					<div class="col mix categoria-anime-peliculas fecha-ya-disponible" data-src="data/anime-peliculas/Demon-Slayer-The-Upper-Ranks-Gather-and-Onward-to-the-Swordsmith-Village.html"></div>
+					<div class="col mix categoria-anime-peliculas fecha-abril" data-src="data/anime-peliculas/The-Klutzy-Witch.html"></div>
+					<div class="col mix categoria-anime-peliculas fecha-abril" data-src="data/anime-peliculas/Suzume.html"></div>
+					<div class="col mix categoria-series fecha-ya-disponible" data-src="data/series/The-Last-of-Us.html"></div>
+					<div class="col mix categoria-series fecha-en-emision" data-src="data/series/Star-Trek-Picard.html"></div>
+					<div class="col mix categoria-series fecha-en-emision" data-src="data/series/The-Flash.html"></div>
+					<div class="col mix categoria-series fecha-en-emision" data-src="data/series/The-Mandarlorian.html"></div>
+					<div class="col mix categoria-series fecha-en-emision" data-src="data/series/Superman-and-Lois.html"></div>
+					<div class="col mix categoria-series fecha-marzo" data-src="data/series/Gotham-Knights.html"></div>
+					<div class="col mix categoria-series fecha-en-emision" data-src="data/series/Ted-Lasso.html"></div>
+					<div class="col mix categoria-series fecha-mayo" data-src="data/series/Fear-The-Walking-Dead.html"></div>
+					<div class="col mix categoria-peliculas fecha-ya-disponible" data-src="data/peliculas/Ant-Man-and-the-Wasp-Quantumania.html"></div>
+					<div class="col mix categoria-peliculas fecha-ya-disponible" data-src="data/peliculas/Creed-III.html"></div>
+					<div class="col mix categoria-peliculas fecha-ya-disponible" data-src="data/peliculas/Scream-6.html"></div>
+					<div class="col mix categoria-peliculas fecha-ya-disponible" data-src="data/peliculas/Shazam-Fury-of-the-Gods.html"></div>
+					<div class="col mix categoria-peliculas fecha-ya-disponible" data-src="data/peliculas/John-Wick-Chapter-4.html"></div>
+					<div class="col mix categoria-peliculas fecha-marzo" data-src="data/peliculas/Dungeons-and-Dragons-Honor-Among-Thieves.html"></div>
+					<div class="col mix categoria-peliculas fecha-abril" data-src="data/peliculas/The-Super-Mario-Bros-Movie.html"></div>
+					<div class="col mix categoria-peliculas fecha-abril" data-src="data/peliculas/Evil-Dead-Rise.html"></div>
+					<div class="col mix categoria-peliculas fecha-abril" data-src="data/peliculas/Knights-of-the-Zodiac.html"></div>
+					<div class="col mix categoria-peliculas fecha-mayo" data-src="data/peliculas/Guardians-of-the-Galaxy-Volume-3.html"></div>
+					<div class="col mix categoria-peliculas fecha-mayo" data-src="data/peliculas/Fast-X.html"></div>
+					<div class="col mix categoria-peliculas fecha-mayo" data-src="data/peliculas/The-Little-Mermaid.html"></div>
+					<div class="col mix categoria-peliculas fecha-junio" data-src="data/peliculas/Spider-Man-Across-the-Spider-Verse.html"></div>
+					<div class="col mix categoria-peliculas fecha-junio" data-src="data/peliculas/Transformers-Rise-of-the Beasts.html"></div>
+					<div class="col mix categoria-peliculas fecha-junio" data-src="data/peliculas/The-Flash.html"></div>
+					<div class="col mix categoria-peliculas fecha-junio" data-src="data/peliculas/Elemental.html"></div>
+					<div class="col mix categoria-peliculas fecha-junio" data-src="data/peliculas/Indiana-Jones-and-the-Dial-of Destiny.html"></div>
+					<div class="col mix categoria-peliculas fecha-julio" data-src="data/peliculas/Barbie.html"></div>
+					<div class="col mix categoria-peliculas fecha-agosto" data-src="data/peliculas/Teenage-Mutant-Ninja-Turtles-Mutant-Mayhem.html"></div>
+					<div class="col mix categoria-peliculas fecha-noviembre" data-src="data/peliculas/The-Marvels.html"></div>
+					<div class="col mix categoria-deportes fecha-abril" data-src="data/deportes/WWE-WrestleMania.html"></div>
+					<div class="col mix categoria-deportes fecha-abril" data-src="data/deportes/Copa-del-Rey.html"></div>
+					<div class="col mix categoria-deportes fecha-mayo" data-src="data/deportes/AEW-Double-or-Nothing.html"></div>
+					<div class="col mix categoria-deportes fecha-mayo" data-src="data/deportes/UEFA-Europa-League.html"></div>
+					<div class="col mix categoria-deportes fecha-junio" data-src="data/deportes/UEFA-Conference-League.html"></div>
+					<div class="col mix categoria-deportes fecha-junio" data-src="data/deportes/UEFA-Champions-League.html"></div>
+					<div class="col mix categoria-deportes fecha-julio" data-src="data/deportes/FIFA-Womens-World-Cup.html"></div>
+					<div class="col mix categoria-eventos fecha-agosto" data-src="data/eventos/comiccon.html"></div>
+				</div>
+			</div>
+		</main>
+		
+		<!--
 		<main class="px-2">
 			<div class="text-secondary py-5">
 				<h1 class="display-1 fw-bold text-white">Cartelera de estrenos 2023</h1>
@@ -167,6 +351,64 @@
 				</div>
 			</div>
 			<div class="col-xxl-8 mx-auto">
+
+				
+				<div class="accordion-body">
+					<div class="rounded row row-cols-2 row-cols-md-4 row-cols-lg-6 g-3 text-center lh-1 bg-body-secondary">
+						<div class="col mix anime-series-now" data-src="data/anime-series/Shingeki-no-Kyojin-1.html"></div>
+						<div class="col mix anime-series-abr" data-src="data/anime-series/Edens-Zero.html"></div>
+						<div class="col mix anime-series-abr" data-src="data/anime-series/The-Dangers-in-My-Heart.html"></div>
+						<div class="col mix anime-series-abr" data-src="data/anime-series/Heavenly-Delusion.html"></div>
+						<div class="col mix anime-series-abr" data-src="data/anime-series/My-Love-Story-With-Yamada-kun-at-Lv999.html"></div>
+						<div class="col mix anime-series-abr" data-src="data/anime-series/In-Another-World-With-My-Smartphone.html"></div>
+						<div class="col mix anime-series-abr" data-src="data/anime-series/Skip-and-Loafer.html"></div>
+						<div class="col mix anime-series-abr" data-src="data/anime-series/Konosuba-An-Explosion-on-This-Wonderful-World.html"></div>
+						<div class="col mix anime-series-abr" data-src="data/anime-series/The-Idolmaster-Cinderella-Girls-U149.html"></div>
+						<div class="col mix anime-series-abr" data-src="data/anime-series/The-Ancient-Magus-Bride.html"></div>
+						<div class="col mix anime-series-abr" data-src="data/anime-series/The-Legendary-Hero-Is-Dead.html"></div>
+						<div class="col mix anime-series-abr" data-src="data/anime-series/Opus-Colors.html"></div>
+						<div class="col mix anime-series-abr" data-src="data/anime-series/Too-Cute-Crisis.html"></div>
+						<div class="col mix anime-series-abr" data-src="data/anime-series/My-One-Hit-Kill-Sister.html"></div>
+						<div class="col mix anime-series-abr" data-src="data/anime-series/Demon-Slayer-Swordsmith-Village-Arc.html"></div>
+						<div class="col mix anime-series-abr" data-src="data/anime-series/Blue-Orchestra.html"></div>
+						<div class="col mix anime-series-abr" data-src="data/anime-series/A-Galaxy-Next-Door.html"></div>
+						<div class="col mix anime-series-abr" data-src="data/anime-series/Insomniacs-After-School.html"></div>
+						<div class="col mix anime-series-abr" data-src="data/anime-series/Dr-Stone.html"></div>
+						<div class="col mix anime-series-abr" data-src="data/anime-series/Mashle.html"></div>
+						<div class="col mix anime-series-abr" data-src="data/anime-series/My-Home-Hero.html"></div>
+						<div class="col mix anime-series-abr" data-src="data/anime-series/Sacrificial-Princess-and-the-King-of-Beasts.html"></div>
+						<div class="col mix anime-series-abr" data-src="data/anime-series/Goddess-Cafe-Terrace.html"></div>
+						<div class="col mix anime-series-abr" data-src="data/anime-series/Mahou-Shoujo-Magical-Destroyers.html"></div>
+						<div class="col mix anime-series-julio" data-src="data/anime-series/The-Duke-of-Death-and-His-Maid.html"></div>
+						<div class="col mix anime-series-juk" data-src="data/anime-series/The-Masterful-Cat-Is-Depressed-Again-Today.html"></div>
+						<div class="col mix anime-series-julio" data-src="data/anime-series/Saint-Cecilia-and-Pastor-Lawrence.html"></div>
+						<div class="col mix anime-series-octubre" data-src="data/anime-series/The-Idolmaster-Million-Live.html"></div>
+						<div class="col mix anime-series-octubre" data-src="data/anime-series/Under-Ninja.html"></div>
+						<div class="col mix anime-series-pronto" data-src="data/anime-series/Ultraman.html"></div>
+						<div class="col mix anime-series-pronto" data-src="data/anime-series/Witch-on-the-Holy-Night.html"></div>
+						<div class="col mix anime-series-pronto" data-src="data/anime-series/Our-Last-Crusade-or-the-Rise-of-a-New-World.html"></div>
+						<div class="col mix anime-series-pronto" data-src="data/anime-series/Konosuba-Gods-Blessing-on-This-Wonderful-World-3.html"></div>
+						<div class="col mix anime-series-pronto" data-src="data/anime-series/Kengan-Ashura.html"></div>
+						<div class="col mix anime-series-pronto" data-src="data/anime-series/Tearmoon-Empire-Story.html"></div>
+						<div class="col mix anime-series-pronto" data-src="data/anime-series/Am-I-Actually-the-Strongest.html"></div>
+						<div class="col mix anime-series-pronto" data-src="data/anime-series/The-Saints-Magic-Power-Is-Omnipotent.html"></div>
+						<div class="col mix anime-series-pronto" data-src="data/anime-series/Cute-Executive-Officer-R.html"></div>
+						<div class="col mix anime-series-pronto" data-src="data/anime-series/I-Shall-Survive-Using-Potions.html"></div>
+						<div class="col mix anime-series-pronto" data-src="data/anime-series/Shingeki-no-Kyojin-2.html"></div>
+						<div class="col mix anime-series-pronto" data-src="data/anime-series/Rurouni-Kenshin.html"></div>
+						<div class="col mix anime-series-pronto" data-src="data/anime-series/Undead-Unluck.html"></div>
+						<div class="col mix anime-series-pronto" data-src="data/anime-series/Shangri-La-Frontier.html"></div>
+						<div class="col mix anime-series-pronto" data-src="data/anime-series/Solo-Leveling.html"></div>
+						<div class="col mix anime-series-pronto" data-src="data/anime-series/Ragna-Crimson.html"></div>
+						<div class="col mix anime-series-pronto" data-src="data/anime-series/FLCL-Grunge.html"></div>
+						<div class="col mix anime-series-pronto" data-src="data/anime-series/FLCL-Shoegaze.html"></div>
+						<div class="col mix anime-series-pronto" data-src="data/anime-series/Dark-Gathering.html"></div>
+						<div class="col mix anime-series-pronto" data-src="data/anime-series/Classroom-for-Heroes.html"></div>
+						<div class="col mix anime-series-pronto" data-src="data/anime-series/The-Devil-is-a-Part-Timer.html"></div>
+						<div class="col mix anime-series-pronto" data-src="data/anime-series/Mushoku-Tensei-Jobless-Reincarnation.html"></div>
+					</div>
+				</div>
+
 				<div class="accordion" id="accordion">
 					<div class="accordion-item">
 						<h2 class="accordion-header" id="headingOne">
@@ -179,13 +421,13 @@
 								<button class="text-uppercase fw-bold m-1 btn btn-primary nav-link active" type="button" data-filter="all" disabled>Todos</button>
 								<button class="text-uppercase fw-bold m-1 btn btn-primary nav-link anime-series-now" type="button" data-filter=".anime-series-now">Ya Disponible</button>
 								<button class="text-uppercase fw-bold m-1 btn btn-primary nav-link anime-series-abr" type="button" data-filter=".anime-series-abr">Abril</button>
-								<button class="text-uppercase fw-bold m-1 btn btn-primary nav-link anime-series-jul" type="button" data-filter=".anime-series-jul">Julio</button>
-								<button class="text-uppercase fw-bold m-1 btn btn-primary nav-link anime-series-oct" type="button" data-filter=".anime-series-oct">Octubre</button>
-								<button class="text-uppercase fw-bold m-1 btn btn-primary nav-link anime-series-soon" type="button" data-filter=".anime-series-soon">Pronto</button>
+								<button class="text-uppercase fw-bold m-1 btn btn-primary nav-link anime-series-julio" type="button" data-filter=".anime-series-julio">Julio</button>
+								<button class="text-uppercase fw-bold m-1 btn btn-primary nav-link anime-series-octubre" type="button" data-filter=".anime-series-octubre">Octubre</button>
+								<button class="text-uppercase fw-bold m-1 btn btn-primary nav-link anime-series-pronto" type="button" data-filter=".anime-series-pronto">Pronto</button>
 							</nav>
 
 							<div class="accordion-body bg-body-secondary">								
-								<div class="titles row row-cols-2 row-cols-md-4 row-cols-lg-6 g-3 text-center lh-1">
+								<div class="row row-cols-2 row-cols-md-4 row-cols-lg-6 g-3 text-center lh-1">
 									<div class="col mix anime-series-now" data-src="data/anime-series/Shingeki-no-Kyojin-1.html"></div>
 									<div class="col mix anime-series-abr" data-src="data/anime-series/Edens-Zero.html"></div>
 									<div class="col mix anime-series-abr" data-src="data/anime-series/The-Dangers-in-My-Heart.html"></div>
@@ -210,33 +452,33 @@
 									<div class="col mix anime-series-abr" data-src="data/anime-series/Sacrificial-Princess-and-the-King-of-Beasts.html"></div>
 									<div class="col mix anime-series-abr" data-src="data/anime-series/Goddess-Cafe-Terrace.html"></div>
 									<div class="col mix anime-series-abr" data-src="data/anime-series/Mahou-Shoujo-Magical-Destroyers.html"></div>
-									<div class="col mix anime-series-jul" data-src="data/anime-series/The-Duke-of-Death-and-His-Maid.html"></div>
+									<div class="col mix anime-series-julio" data-src="data/anime-series/The-Duke-of-Death-and-His-Maid.html"></div>
 									<div class="col mix anime-series-juk" data-src="data/anime-series/The-Masterful-Cat-Is-Depressed-Again-Today.html"></div>
-									<div class="col mix anime-series-jul" data-src="data/anime-series/Saint-Cecilia-and-Pastor-Lawrence.html"></div>
-									<div class="col mix anime-series-oct" data-src="data/anime-series/The-Idolmaster-Million-Live.html"></div>
-									<div class="col mix anime-series-oct" data-src="data/anime-series/Under-Ninja.html"></div>
-									<div class="col mix anime-series-soon" data-src="data/anime-series/Ultraman.html"></div>
-									<div class="col mix anime-series-soon" data-src="data/anime-series/Witch-on-the-Holy-Night.html"></div>
-									<div class="col mix anime-series-soon" data-src="data/anime-series/Our-Last-Crusade-or-the-Rise-of-a-New-World.html"></div>
-									<div class="col mix anime-series-soon" data-src="data/anime-series/Konosuba-Gods-Blessing-on-This-Wonderful-World-3.html"></div>
-									<div class="col mix anime-series-soon" data-src="data/anime-series/Kengan-Ashura.html"></div>
-									<div class="col mix anime-series-soon" data-src="data/anime-series/Tearmoon-Empire-Story.html"></div>
-									<div class="col mix anime-series-soon" data-src="data/anime-series/Am-I-Actually-the-Strongest.html"></div>
-									<div class="col mix anime-series-soon" data-src="data/anime-series/The-Saints-Magic-Power-Is-Omnipotent.html"></div>
-									<div class="col mix anime-series-soon" data-src="data/anime-series/Cute-Executive-Officer-R.html"></div>
-									<div class="col mix anime-series-soon" data-src="data/anime-series/I-Shall-Survive-Using-Potions.html"></div>
-									<div class="col mix anime-series-soon" data-src="data/anime-series/Shingeki-no-Kyojin-2.html"></div>
-									<div class="col mix anime-series-soon" data-src="data/anime-series/Rurouni-Kenshin.html"></div>
-									<div class="col mix anime-series-soon" data-src="data/anime-series/Undead-Unluck.html"></div>
-									<div class="col mix anime-series-soon" data-src="data/anime-series/Shangri-La-Frontier.html"></div>
-									<div class="col mix anime-series-soon" data-src="data/anime-series/Solo-Leveling.html"></div>
-									<div class="col mix anime-series-soon" data-src="data/anime-series/Ragna-Crimson.html"></div>
-									<div class="col mix anime-series-soon" data-src="data/anime-series/FLCL-Grunge.html"></div>
-									<div class="col mix anime-series-soon" data-src="data/anime-series/FLCL-Shoegaze.html"></div>
-									<div class="col mix anime-series-soon" data-src="data/anime-series/Dark-Gathering.html"></div>
-									<div class="col mix anime-series-soon" data-src="data/anime-series/Classroom-for-Heroes.html"></div>
-									<div class="col mix anime-series-soon" data-src="data/anime-series/The-Devil-is-a-Part-Timer.html"></div>
-									<div class="col mix anime-series-soon" data-src="data/anime-series/Mushoku-Tensei-Jobless-Reincarnation.html"></div>
+									<div class="col mix anime-series-julio" data-src="data/anime-series/Saint-Cecilia-and-Pastor-Lawrence.html"></div>
+									<div class="col mix anime-series-octubre" data-src="data/anime-series/The-Idolmaster-Million-Live.html"></div>
+									<div class="col mix anime-series-octubre" data-src="data/anime-series/Under-Ninja.html"></div>
+									<div class="col mix anime-series-pronto" data-src="data/anime-series/Ultraman.html"></div>
+									<div class="col mix anime-series-pronto" data-src="data/anime-series/Witch-on-the-Holy-Night.html"></div>
+									<div class="col mix anime-series-pronto" data-src="data/anime-series/Our-Last-Crusade-or-the-Rise-of-a-New-World.html"></div>
+									<div class="col mix anime-series-pronto" data-src="data/anime-series/Konosuba-Gods-Blessing-on-This-Wonderful-World-3.html"></div>
+									<div class="col mix anime-series-pronto" data-src="data/anime-series/Kengan-Ashura.html"></div>
+									<div class="col mix anime-series-pronto" data-src="data/anime-series/Tearmoon-Empire-Story.html"></div>
+									<div class="col mix anime-series-pronto" data-src="data/anime-series/Am-I-Actually-the-Strongest.html"></div>
+									<div class="col mix anime-series-pronto" data-src="data/anime-series/The-Saints-Magic-Power-Is-Omnipotent.html"></div>
+									<div class="col mix anime-series-pronto" data-src="data/anime-series/Cute-Executive-Officer-R.html"></div>
+									<div class="col mix anime-series-pronto" data-src="data/anime-series/I-Shall-Survive-Using-Potions.html"></div>
+									<div class="col mix anime-series-pronto" data-src="data/anime-series/Shingeki-no-Kyojin-2.html"></div>
+									<div class="col mix anime-series-pronto" data-src="data/anime-series/Rurouni-Kenshin.html"></div>
+									<div class="col mix anime-series-pronto" data-src="data/anime-series/Undead-Unluck.html"></div>
+									<div class="col mix anime-series-pronto" data-src="data/anime-series/Shangri-La-Frontier.html"></div>
+									<div class="col mix anime-series-pronto" data-src="data/anime-series/Solo-Leveling.html"></div>
+									<div class="col mix anime-series-pronto" data-src="data/anime-series/Ragna-Crimson.html"></div>
+									<div class="col mix anime-series-pronto" data-src="data/anime-series/FLCL-Grunge.html"></div>
+									<div class="col mix anime-series-pronto" data-src="data/anime-series/FLCL-Shoegaze.html"></div>
+									<div class="col mix anime-series-pronto" data-src="data/anime-series/Dark-Gathering.html"></div>
+									<div class="col mix anime-series-pronto" data-src="data/anime-series/Classroom-for-Heroes.html"></div>
+									<div class="col mix anime-series-pronto" data-src="data/anime-series/The-Devil-is-a-Part-Timer.html"></div>
+									<div class="col mix anime-series-pronto" data-src="data/anime-series/Mushoku-Tensei-Jobless-Reincarnation.html"></div>
 								</div>
 							</div>
 						</div>
@@ -258,7 +500,7 @@
 						</div>
 					</div>
 					
-					<!--
+					
 					<div class="accordion-item">
 						<h2 class="accordion-header" id="headingThree">
 							<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
@@ -272,7 +514,7 @@
 							</div>
 						</div>
 					</div>
-					-->
+					
 					
 					<div class="accordion-item">
 						<h2 class="accordion-header" id="headingFour">
@@ -310,7 +552,7 @@
 									<div class="col mix" data-src="data/peliculas/Shazam-Fury-of-the-Gods.html"></div>
 									<div class="col mix" data-src="data/peliculas/John-Wick-Chapter-4.html"></div>
 									<div class="col mix" data-src="data/peliculas/Dungeons-and-Dragons-Honor-Among-Thieves.html"></div>
-									<div class="col mix" data-src="data/peliculas/The-Super-Mario-Bros-Movie.html"></div>
+									<div class="col mix" data-src="data/peliculas/The-Super-marzoio-Bros-Movie.html"></div>
 									<div class="col mix" data-src="data/peliculas/Evil-Dead-Rise.html"></div>
 									<div class="col mix" data-src="data/peliculas/Knights-of-the-Zodiac.html"></div>
 									<div class="col mix" data-src="data/peliculas/Guardians-of-the-Galaxy-Volume-3.html"></div>
@@ -322,8 +564,8 @@
 									<div class="col mix" data-src="data/peliculas/Elemental.html"></div>
 									<div class="col mix" data-src="data/peliculas/Indiana-Jones-and-the-Dial-of Destiny.html"></div>
 									<div class="col mix" data-src="data/peliculas/Barbie.html"></div>
-									<div class="col mix" data-src="data/peliculas/Teenage-Mutant-Ninja-Turtles-Mutant-Mayhem.html"></div>
-									<div class="col mix" data-src="data/peliculas/The-Marvels.html"></div>
+									<div class="col mix" data-src="data/peliculas/Teenage-Mutant-Ninja-Turtles-Mutant-mayohem.html"></div>
+									<div class="col mix" data-src="data/peliculas/The-marzovels.html"></div>
 								</div>
 							</div>
 						</div>
@@ -339,7 +581,7 @@
 								<div class="row row-cols-2 row-cols-md-4 row-cols-lg-6 g-3 text-center lh-1">								
 									<div class="col mix">
 										<div class="card h-100">
-											<img src="img/videojuegos/one-piece-odyssey-button-fin-1663259262561.jpg" class="card-img-top img-fluid" alt="image">
+											<img src="https://ik.imagekit.io/popcultfanclub/img/videojuegos/one-piece-odyssey-button-fin-1663259262561.jpg?tr=w-200" class="card-img-top img-fluid" alt="image">
 											<div class="card-body">
 												<h5 class="card-title display-6 fw-bold fs-6">One Piece Odyssey</h5>
 											</div>
@@ -350,7 +592,7 @@
 									</div>
 									<div class="col mix">
 										<div class="card h-100">
-											<img src="img/videojuegos/fire-emblem-engage-button-1663083482644.jpg" class="card-img-top img-fluid" alt="image">
+											<img src="https://ik.imagekit.io/popcultfanclub/img/videojuegos/fire-emblem-engage-button-1663083482644.jpg?tr=w-200" class="card-img-top img-fluid" alt="image">
 											<div class="card-body">
 												<h5 class="card-title display-6 fw-bold fs-6">Fire Emblem Engage</h5>
 											</div>
@@ -361,7 +603,7 @@
 									</div>
 									<div class="col mix">
 										<div class="card h-100">
-											<img src="img/videojuegos/forspoken-button-fin-1656019045535.jpg" class="card-img-top img-fluid" alt="image">
+											<img src="https://ik.imagekit.io/popcultfanclub/img/videojuegos/forspoken-button-fin-1656019045535.jpg?tr=w-200" class="card-img-top img-fluid" alt="image">
 											<div class="card-body">
 												<h5 class="card-title display-6 fw-bold fs-6">Forspoken</h5>
 											</div>
@@ -372,7 +614,7 @@
 									</div>
 									<div class="col mix">
 										<div class="card h-100">
-											<img src="img/videojuegos/nba-all-world-button-1-1656434339051.jpg" class="card-img-top img-fluid" alt="image">
+											<img src="https://ik.imagekit.io/popcultfanclub/img/videojuegos/nba-all-world-button-1-1656434339051.jpg?tr=w-200" class="card-img-top img-fluid" alt="image">
 											<div class="card-body">
 												<h5 class="card-title display-6 fw-bold fs-6">NBA All-World</h5>
 											</div>
@@ -383,7 +625,7 @@
 									</div>
 									<div class="col mix">
 										<div class="card h-100">
-											<img src="img/videojuegos/hifirush-1674680068070.jpg" class="card-img-top img-fluid" alt="image">
+											<img src="https://ik.imagekit.io/popcultfanclub/img/videojuegos/hifirush-1674680068070.jpg?tr=w-200" class="card-img-top img-fluid" alt="image">
 											<div class="card-body">
 												<h5 class="card-title display-6 fw-bold fs-6">Hi-Fi Rush</h5>
 											</div>
@@ -394,7 +636,7 @@
 									</div>
 									<div class="col mix">
 										<div class="card h-100">
-											<img src="img/videojuegos/dead-space-2023-button-3-1665603079064.jpg" class="card-img-top img-fluid" alt="image">
+											<img src="https://ik.imagekit.io/popcultfanclub/img/videojuegos/dead-space-2023-button-3-1665603079064.jpg?tr=w-200" class="card-img-top img-fluid" alt="image">
 											<div class="card-body">
 												<h5 class="card-title display-6 fw-bold fs-6">Dead Space (Remake)</h5>
 											</div>
@@ -405,7 +647,7 @@
 									</div>
 									<div class="col mix">
 										<div class="card h-100">
-											<img src="img/videojuegos/spongebob-squarepants-cosmic-shake-button-fin-1660358126110.jpg" class="card-img-top img-fluid" alt="image">
+											<img src="https://ik.imagekit.io/popcultfanclub/img/videojuegos/spongebob-squarepants-cosmic-shake-button-fin-1660358126110.jpg?tr=w-200" class="card-img-top img-fluid" alt="image">
 											<div class="card-body">
 												<h5 class="card-title display-6 fw-bold fs-6">SpongeBob SquarePants: The Cosmic Shake</h5>
 											</div>
@@ -416,7 +658,7 @@
 									</div>
 									<div class="col mix">
 										<div class="card h-100">
-											<img src="img/videojuegos/deliver-us-mars-button-fin-1654711142631.jpg" class="card-img-top img-fluid" alt="image">
+											<img src="https://ik.imagekit.io/popcultfanclub/img/videojuegos/deliver-us-marzos-button-fin-1654711142631.jpg?tr=w-200" class="card-img-top img-fluid" alt="image">
 											<div class="card-body">
 												<h5 class="card-title display-6 fw-bold fs-6">Deliver Us Mars</h5>
 											</div>
@@ -427,7 +669,7 @@
 									</div>
 									<div class="col mix">
 										<div class="card h-100">
-											<img src="img/videojuegos/hogwarts-legacy-button-fin-1653421326559.jpg" class="card-img-top img-fluid" alt="image">
+											<img src="https://ik.imagekit.io/popcultfanclub/img/videojuegos/hogwarts-legacy-button-fin-1653421326559.jpg?tr=w-200" class="card-img-top img-fluid" alt="image">
 											<div class="card-body">
 												<h5 class="card-title display-6 fw-bold fs-6">Hogwarts Legacy</h5>
 											</div>
@@ -438,7 +680,7 @@
 									</div>
 									<div class="col mix">
 										<div class="card h-100">
-											<img src="img/videojuegos/trreloaded-1675290006639.jpg" class="card-img-top img-fluid" alt="image">
+											<img src="https://ik.imagekit.io/popcultfanclub/img/videojuegos/trreloaded-1675290006639.jpg?tr=w-200" class="card-img-top img-fluid" alt="image">
 											<div class="card-body">
 												<h5 class="card-title display-6 fw-bold fs-6">Tomb Raider Reloaded</h5>
 											</div>
@@ -449,7 +691,7 @@
 									</div>
 									<div class="col mix">
 										<div class="card h-100">
-											<img src="img/videojuegos/wildhearts-1676575418849.jpg" class="card-img-top img-fluid" alt="image">
+											<img src="https://ik.imagekit.io/popcultfanclub/img/videojuegos/wildhearts-1676575418849.jpg?tr=w-200" class="card-img-top img-fluid" alt="image">
 											<div class="card-body">
 												<h5 class="card-title display-6 fw-bold fs-6">Wild Hearts</h5>
 											</div>
@@ -460,7 +702,7 @@
 									</div>
 									<div class="col mix">
 										<div class="card h-100">
-											<img src="img/videojuegos/atomic-heart-button-fin-1667702670613.jpg" class="card-img-top img-fluid" alt="image">
+											<img src="https://ik.imagekit.io/popcultfanclub/img/videojuegos/atomic-heart-button-fin-1667702670613.jpg?tr=w-200" class="card-img-top img-fluid" alt="image">
 											<div class="card-body">
 												<h5 class="card-title display-6 fw-bold fs-6">Atomic Heart</h5>
 											</div>
@@ -471,7 +713,7 @@
 									</div>
 									<div class="col mix">
 										<div class="card h-100">
-											<img src="img/videojuegos/like-a-dragon-ishin-button-fin-1665603305964.jpg" class="card-img-top img-fluid" alt="image">
+											<img src="https://ik.imagekit.io/popcultfanclub/img/videojuegos/like-a-dragon-ishin-button-fin-1665603305964.jpg?tr=w-200" class="card-img-top img-fluid" alt="image">
 											<div class="card-body">
 												<h5 class="card-title display-6 fw-bold fs-6">Like a Dragon: Ishin!</h5>
 											</div>
@@ -482,7 +724,7 @@
 									</div>
 									<div class="col mix">
 										<div class="card h-100">
-											<img src="img/videojuegos/primeremastered-1675898126498.jpg" class="card-img-top img-fluid" alt="image">
+											<img src="https://ik.imagekit.io/popcultfanclub/img/videojuegos/primeremastered-1675898126498.jpg?tr=w-200" class="card-img-top img-fluid" alt="image">
 											<div class="card-body">
 												<h5 class="card-title display-6 fw-bold fs-6">Metroid Prime: Remastered</h5>
 											</div>
@@ -493,7 +735,7 @@
 									</div>
 									<div class="col mix">
 										<div class="card h-100">
-											<img src="img/videojuegos/horizon-call-of-the-mountain-button-fin-1668569986563.jpg" class="card-img-top img-fluid" alt="image">
+											<img src="https://ik.imagekit.io/popcultfanclub/img/videojuegos/horizon-call-of-the-mountain-button-fin-1668569986563.jpg?tr=w-200" class="card-img-top img-fluid" alt="image">
 											<div class="card-body">
 												<h5 class="card-title display-6 fw-bold fs-6">Horizon Call of the Mountain</h5>
 											</div>
@@ -504,7 +746,7 @@
 									</div>
 									<div class="col mix">
 										<div class="card h-100">
-											<img src="img/videojuegos/company-of-heroes-3-button-resize-1657653328088.jpg" class="card-img-top img-fluid" alt="image">
+											<img src="https://ik.imagekit.io/popcultfanclub/img/videojuegos/company-of-heroes-3-button-resize-1657653328088.jpg?tr=w-200" class="card-img-top img-fluid" alt="image">
 											<div class="card-body">
 												<h5 class="card-title display-6 fw-bold fs-6">Company of Heroes 3</h5>
 											</div>
@@ -515,7 +757,7 @@
 									</div>
 									<div class="col mix">
 										<div class="card h-100">
-											<img src="img/videojuegos/kirbys-return-to-dream-land-deluxe-button-1663082616652.jpg" class="card-img-top img-fluid" alt="image">
+											<img src="https://ik.imagekit.io/popcultfanclub/img/videojuegos/kirbys-return-to-dream-land-deluxe-button-1663082616652.jpg?tr=w-200" class="card-img-top img-fluid" alt="image">
 											<div class="card-body">
 												<h5 class="card-title display-6 fw-bold fs-6">Kirby’s Return to Dream Land Deluxe</h5>
 											</div>
@@ -526,7 +768,7 @@
 									</div>
 									<div class="col mix">
 										<div class="card h-100">
-											<img src="img/videojuegos/destiny-2-lightfall-button-fin-1670289439645.jpg" class="card-img-top img-fluid" alt="image">
+											<img src="https://ik.imagekit.io/popcultfanclub/img/videojuegos/destiny-2-lightfall-button-fin-1670289439645.jpg?tr=w-200" class="card-img-top img-fluid" alt="image">
 											<div class="card-body">
 												<h5 class="card-title display-6 fw-bold fs-6">Destiny 2: Lightfall</h5>
 											</div>
@@ -537,7 +779,7 @@
 									</div>
 									<div class="col mix">
 										<div class="card h-100">
-											<img src="img/videojuegos/bayonettaorigins-1670612604037.jpg" class="card-img-top img-fluid" alt="image">
+											<img src="https://ik.imagekit.io/popcultfanclub/img/videojuegos/bayonettaorigins-1670612604037.jpg?tr=w-200" class="card-img-top img-fluid" alt="image">
 											<div class="card-body">
 												<h5 class="card-title display-6 fw-bold fs-6">Bayonetta Origins: Cereza and the Lost Demon</h5>
 											</div>
@@ -548,7 +790,7 @@
 									</div>
 									<div class="col mix">
 										<div class="card h-100">
-											<img src="img/videojuegos/wwe2k23-button-1674491581047.jpg" class="card-img-top img-fluid" alt="image">
+											<img src="https://ik.imagekit.io/popcultfanclub/img/videojuegos/wwe2k23-button-1674491581047.jpg?tr=w-200" class="card-img-top img-fluid" alt="image">
 											<div class="card-body">
 												<h5 class="card-title display-6 fw-bold fs-6">WWE 2K23</h5>
 											</div>
@@ -559,7 +801,7 @@
 									</div>
 									<div class="col mix">
 										<div class="card h-100">
-											<img src="img/videojuegos/resident-evil-4-remake-button-001-1654224044946.jpg" class="card-img-top img-fluid" alt="image">
+											<img src="https://ik.imagekit.io/popcultfanclub/img/videojuegos/resident-evil-4-remake-button-001-1654224044946.jpg?tr=w-200" class="card-img-top img-fluid" alt="image">
 											<div class="card-body">
 												<h5 class="card-title display-6 fw-bold fs-6">Resident Evil 4 Remake</h5>
 											</div>
@@ -570,7 +812,7 @@
 									</div>
 									<div class="col mix">
 										<div class="card h-100">
-											<img src="img/videojuegos/crimeboss-1670613538047.jpg" class="card-img-top img-fluid" alt="image">
+											<img src="https://ik.imagekit.io/popcultfanclub/img/videojuegos/crimeboss-1670613538047.jpg?tr=w-200" class="card-img-top img-fluid" alt="image">
 											<div class="card-body">
 												<h5 class="card-title display-6 fw-bold fs-6">Crime Boss: Rockay City</h5>
 											</div>
@@ -581,7 +823,7 @@
 									</div>
 									<div class="col mix">
 										<div class="card h-100">
-											<img src="img/videojuegos/the-last-of-us-part-1-button-1654791855870.jpg" class="card-img-top img-fluid" alt="image">
+											<img src="https://ik.imagekit.io/popcultfanclub/img/videojuegos/the-last-of-us-part-1-button-1654791855870.jpg?tr=w-200" class="card-img-top img-fluid" alt="image">
 											<div class="card-body">
 												<h5 class="card-title display-6 fw-bold fs-6">The Last of Us Part I (PC)</h5>
 											</div>
@@ -592,7 +834,7 @@
 									</div>
 									<div class="col mix">
 										<div class="card h-100">
-											<img src="img/videojuegos/mlb-the-show-23-button-1675130884668.jpg" class="card-img-top img-fluid" alt="image">
+											<img src="https://ik.imagekit.io/popcultfanclub/img/videojuegos/mlb-the-show-23-button-1675130884668.jpg?tr=w-200" class="card-img-top img-fluid" alt="image">
 											<div class="card-body">
 												<h5 class="card-title display-6 fw-bold fs-6">MLB The Show 23</h5>
 											</div>
@@ -603,7 +845,7 @@
 									</div>
 									<div class="col mix">
 										<div class="card h-100">
-											<img src="img/videojuegos/star-wars-jedi-survivor-button-02a-1670263740893.jpg" class="card-img-top img-fluid" alt="image">
+											<img src="https://ik.imagekit.io/popcultfanclub/img/videojuegos/star-wars-jedi-survivor-button-02a-1670263740893.jpg?tr=w-200" class="card-img-top img-fluid" alt="image">
 											<div class="card-body">
 												<h5 class="card-title display-6 fw-bold fs-6">Star Wars Jedi: Survivor</h5>
 											</div>
@@ -614,7 +856,7 @@
 									</div>
 									<div class="col mix">
 										<div class="card h-100">
-											<img src="img/videojuegos/star-trek-resurgence-button-1639105978976.jpg" class="card-img-top img-fluid" alt="image">
+											<img src="https://ik.imagekit.io/popcultfanclub/img/videojuegos/star-trek-resurgence-button-1639105978976.jpg?tr=w-200" class="card-img-top img-fluid" alt="image">
 											<div class="card-body">
 												<h5 class="card-title display-6 fw-bold fs-6">Star Trek: Resurgence</h5>
 											</div>
@@ -625,7 +867,7 @@
 									</div>
 									<div class="col mix">
 										<div class="card h-100">
-											<img src="img/videojuegos/tron-identity-button-1662754885361.jpg" class="card-img-top img-fluid" alt="image">
+											<img src="https://ik.imagekit.io/popcultfanclub/img/videojuegos/tron-identity-button-1662754885361.jpg?tr=w-200" class="card-img-top img-fluid" alt="image">
 											<div class="card-body">
 												<h5 class="card-title display-6 fw-bold fs-6">Tron: Identity</h5>
 											</div>
@@ -636,7 +878,7 @@
 									</div>
 									<div class="col mix">
 										<div class="card h-100">
-											<img src="img/videojuegos/redfall-1631232018892.png" class="card-img-top img-fluid" alt="image">
+											<img src="https://ik.imagekit.io/popcultfanclub/img/videojuegos/redfall-1631232018892.png" class="card-img-top img-fluid" alt="image">
 											<div class="card-body">
 												<h5 class="card-title display-6 fw-bold fs-6">Redfall</h5>
 											</div>
@@ -647,7 +889,7 @@
 									</div>
 									<div class="col mix">
 										<div class="card h-100">
-											<img src="img/videojuegos/zelda-tears-of-the-kingdom-button-2k-1663127818777.jpg" class="card-img-top img-fluid" alt="image">
+											<img src="https://ik.imagekit.io/popcultfanclub/img/videojuegos/zelda-tears-of-the-kingdom-button-2k-1663127818777.jpg?tr=w-200" class="card-img-top img-fluid" alt="image">
 											<div class="card-body">
 												<h5 class="card-title display-6 fw-bold fs-6">The Legend of Zelda: Tears of the Kingdom</h5>
 											</div>
@@ -658,7 +900,7 @@
 									</div>
 									<div class="col mix">
 										<div class="card h-100">
-											<img src="img/videojuegos/killthejusticeleague-sq-1643333156898.jpg" class="card-img-top img-fluid" alt="image">
+											<img src="https://ik.imagekit.io/popcultfanclub/img/videojuegos/killthejusticeleague-sq-1643333156898.jpg?tr=w-200" class="card-img-top img-fluid" alt="image">
 											<div class="card-body">
 												<h5 class="card-title display-6 fw-bold fs-6">Suicide Squad: Kill the Justice League</h5>
 											</div>
@@ -669,7 +911,7 @@
 									</div>
 									<div class="col mix">
 										<div class="card h-100">
-											<img src="img/videojuegos/humanity---button-01a-1569360342834.jpg" class="card-img-top img-fluid" alt="image">
+											<img src="https://ik.imagekit.io/popcultfanclub/img/videojuegos/humanity---button-01a-1569360342834.jpg?tr=w-200" class="card-img-top img-fluid" alt="image">
 											<div class="card-body">
 												<h5 class="card-title display-6 fw-bold fs-6">Humanity</h5>
 											</div>
@@ -680,7 +922,7 @@
 									</div>
 									<div class="col mix">
 										<div class="card h-100">
-											<img src="img/videojuegos/streetfighter6-1654209159828.jpg" class="card-img-top img-fluid" alt="image">
+											<img src="https://ik.imagekit.io/popcultfanclub/img/videojuegos/streetfighter6-1654209159828.jpg?tr=w-200" class="card-img-top img-fluid" alt="image">
 											<div class="card-body">
 												<h5 class="card-title display-6 fw-bold fs-6">Street Fighter 6</h5>
 											</div>
@@ -691,7 +933,7 @@
 									</div>
 									<div class="col mix">
 										<div class="card h-100">
-											<img src="img/videojuegos/diablo-iv-button-2021-1639768661633.jpg" class="card-img-top img-fluid" alt="image">
+											<img src="https://ik.imagekit.io/popcultfanclub/img/videojuegos/diablo-iv-button-2021-1639768661633.jpg?tr=w-200" class="card-img-top img-fluid" alt="image">
 											<div class="card-body">
 												<h5 class="card-title display-6 fw-bold fs-6">Diablo IV</h5>
 											</div>
@@ -702,7 +944,7 @@
 									</div>
 									<div class="col mix">
 										<div class="card h-100">
-											<img src="img/videojuegos/final-fantasy-xvi-button-1628180674117.jpg" class="card-img-top img-fluid" alt="image">
+											<img src="https://ik.imagekit.io/popcultfanclub/img/videojuegos/final-fantasy-xvi-button-1628180674117.jpg?tr=w-200" class="card-img-top img-fluid" alt="image">
 											<div class="card-body">
 												<h5 class="card-title display-6 fw-bold fs-6">Final Fantasy XVI</h5>
 											</div>
@@ -713,7 +955,7 @@
 									</div>
 									<div class="col mix">
 										<div class="card h-100">
-											<img src="img/videojuegos/robocop-rogue-city-button-01-1625620615956.jpg" class="card-img-top img-fluid" alt="image">
+											<img src="https://ik.imagekit.io/popcultfanclub/img/videojuegos/robocop-rogue-city-button-01-1625620615956.jpg?tr=w-200" class="card-img-top img-fluid" alt="image">
 											<div class="card-body">
 												<h5 class="card-title display-6 fw-bold fs-6">RoboCop: Rogue City</h5>
 											</div>
@@ -724,7 +966,7 @@
 									</div>
 									<div class="col mix">
 										<div class="card h-100">
-											<img src="img/videojuegos/pikmin4-1675901951813.jpg" class="card-img-top img-fluid" alt="image">
+											<img src="https://ik.imagekit.io/popcultfanclub/img/videojuegos/pikmin4-1675901951813.jpg?tr=w-200" class="card-img-top img-fluid" alt="image">
 											<div class="card-body">
 												<h5 class="card-title display-6 fw-bold fs-6">Pikmin 4</h5>
 											</div>
@@ -735,7 +977,7 @@
 									</div>
 									<div class="col mix">
 										<div class="card h-100">
-											<img src="img/videojuegos/illusionisland-1662764531770.jpg" class="card-img-top img-fluid" alt="image">
+											<img src="https://ik.imagekit.io/popcultfanclub/img/videojuegos/illusionisland-1662764531770.jpg?tr=w-200" class="card-img-top img-fluid" alt="image">
 											<div class="card-body">
 												<h5 class="card-title display-6 fw-bold fs-6">Disney Illusion Island</h5>
 											</div>
@@ -746,7 +988,7 @@
 									</div>
 									<div class="col mix">
 										<div class="card h-100">
-											<img src="img/videojuegos/seaofstars-1651615311837.jpg" class="card-img-top img-fluid" alt="image">
+											<img src="https://ik.imagekit.io/popcultfanclub/img/videojuegos/seaofstars-1651615311837.jpg?tr=w-200" class="card-img-top img-fluid" alt="image">
 											<div class="card-body">
 												<h5 class="card-title display-6 fw-bold fs-6">Sea of Stars</h5>
 											</div>
@@ -757,7 +999,7 @@
 									</div>
 									<div class="col mix">
 										<div class="card h-100">
-											<img src="img/videojuegos/screen-shot-2023-02-08-at-11-00-22-am-1675875633286.png" class="card-img-top img-fluid" alt="image">
+											<img src="https://ik.imagekit.io/popcultfanclub/img/videojuegos/screen-shot-2023-02-08-at-11-00-22-am-1675875633286.png" class="card-img-top img-fluid" alt="image">
 											<div class="card-body">
 												<h5 class="card-title display-6 fw-bold fs-6">AEW Fight Forever</h5>
 											</div>
@@ -768,7 +1010,7 @@
 									</div>
 									<div class="col mix">
 										<div class="card h-100">
-											<img src="img/videojuegos/ea-sports-fc-button-ph-1652203980658.jpg" class="card-img-top img-fluid" alt="image">
+											<img src="https://ik.imagekit.io/popcultfanclub/img/videojuegos/ea-sports-fc-button-ph-1652203980658.jpg?tr=w-200" class="card-img-top img-fluid" alt="image">
 											<div class="card-body">
 												<h5 class="card-title display-6 fw-bold fs-6">EA Sports FC</h5>
 											</div>
@@ -779,7 +1021,7 @@
 									</div>
 									<div class="col mix">
 										<div class="card h-100">
-											<img src="img/videojuegos/ffvii-rebirth-1656441330369.jpg" class="card-img-top img-fluid" alt="image">
+											<img src="https://ik.imagekit.io/popcultfanclub/img/videojuegos/ffvii-rebirth-1656441330369.jpg?tr=w-200" class="card-img-top img-fluid" alt="image">
 											<div class="card-body">
 												<h5 class="card-title display-6 fw-bold fs-6">Final Fantasy VII Rebirth</h5>
 											</div>
@@ -790,7 +1032,7 @@
 									</div>
 									<div class="col mix">
 										<div class="card h-100">
-											<img src="img/videojuegos/forzamotorsport-1655153302595.jpg" class="card-img-top img-fluid" alt="image">
+											<img src="https://ik.imagekit.io/popcultfanclub/img/videojuegos/forzamotorsport-1655153302595.jpg?tr=w-200" class="card-img-top img-fluid" alt="image">
 											<div class="card-body">
 												<h5 class="card-title display-6 fw-bold fs-6">Forza Motorsport</h5>
 											</div>
@@ -801,7 +1043,7 @@
 									</div>
 									<div class="col mix">
 										<div class="card h-100">
-											<img src="img/videojuegos/starfield-ign-sq-1643334195275.jpg" class="card-img-top img-fluid" alt="image">
+											<img src="https://ik.imagekit.io/popcultfanclub/img/videojuegos/starfield-ign-sq-1643334195275.jpg?tr=w-200" class="card-img-top img-fluid" alt="image">
 											<div class="card-body">
 												<h5 class="card-title display-6 fw-bold fs-6">Starfield</h5>
 											</div>
@@ -812,7 +1054,7 @@
 									</div>
 									<div class="col mix">
 										<div class="card h-100">
-											<img src="img/videojuegos/pokemonsleep-1677516767687.jpg" class="card-img-top img-fluid" alt="image">
+											<img src="https://ik.imagekit.io/popcultfanclub/img/videojuegos/pokemonsleep-1677516767687.jpg?tr=w-200" class="card-img-top img-fluid" alt="image">
 											<div class="card-body">
 												<h5 class="card-title display-6 fw-bold fs-6">Pokémon Sleep</h5>
 											</div>
@@ -823,7 +1065,7 @@
 									</div>
 									<div class="col mix">
 										<div class="card h-100">
-											<img src="img/videojuegos/spiderman2ps-sq-1642799668042.jpg" class="card-img-top img-fluid" alt="image">
+											<img src="https://ik.imagekit.io/popcultfanclub/img/videojuegos/spiderman2ps-sq-1642799668042.jpg?tr=w-200" class="card-img-top img-fluid" alt="image">
 											<div class="card-body">
 												<h5 class="card-title display-6 fw-bold fs-6">Marvel’s Spider-Man 2</h5>
 											</div>
@@ -834,7 +1076,7 @@
 									</div>
 									<div class="col mix">
 										<div class="card h-100">
-											<img src="img/videojuegos/alan-wake-ii-placeholder-1646331354480.jpg" class="card-img-top img-fluid" alt="image">
+											<img src="https://ik.imagekit.io/popcultfanclub/img/videojuegos/alan-wake-ii-placeholder-1646331354480.jpg?tr=w-200" class="card-img-top img-fluid" alt="image">
 											<div class="card-body">
 												<h5 class="card-title display-6 fw-bold fs-6">Alan Wake II</h5>
 											</div>
@@ -845,7 +1087,7 @@
 									</div>
 									<div class="col mix">
 										<div class="card h-100">
-											<img src="img/videojuegos/ark-2-button-1608054471721.jpg" class="card-img-top img-fluid" alt="image">
+											<img src="https://ik.imagekit.io/popcultfanclub/img/videojuegos/ark-2-button-1608054471721.jpg?tr=w-200" class="card-img-top img-fluid" alt="image">
 											<div class="card-body">
 												<h5 class="card-title display-6 fw-bold fs-6">Ark 2</h5>
 											</div>
@@ -856,7 +1098,7 @@
 									</div>
 									<div class="col mix">
 										<div class="card h-100">
-											<img src="img/videojuegos/ac6-1670605888212.jpg" class="card-img-top img-fluid" alt="image">
+											<img src="https://ik.imagekit.io/popcultfanclub/img/videojuegos/ac6-1670605888212.jpg?tr=w-200" class="card-img-top img-fluid" alt="image">
 											<div class="card-body">
 												<h5 class="card-title display-6 fw-bold fs-6">Armored Core VI</h5>
 											</div>
@@ -867,7 +1109,7 @@
 									</div>
 									<div class="col mix">
 										<div class="card h-100">
-											<img src="img/videojuegos/assassins-creed-mirage-button-fin-1662844632503.jpg" class="card-img-top img-fluid" alt="image">
+											<img src="https://ik.imagekit.io/popcultfanclub/img/videojuegos/assassins-creed-mirage-button-fin-1662844632503.jpg?tr=w-200" class="card-img-top img-fluid" alt="image">
 											<div class="card-body">
 												<h5 class="card-title display-6 fw-bold fs-6">Assassin’s Creed Mirage</h5>
 											</div>
@@ -878,7 +1120,7 @@
 									</div>
 									<div class="col mix">
 										<div class="card h-100">
-											<img src="img/videojuegos/avatarfrontiersofpandora-1646871078295.jpg" class="card-img-top img-fluid" alt="image">
+											<img src="https://ik.imagekit.io/popcultfanclub/img/videojuegos/avatarfrontiersofpandora-1646871078295.jpg?tr=w-200" class="card-img-top img-fluid" alt="image">
 											<div class="card-body">
 												<h5 class="card-title display-6 fw-bold fs-6">Avatar: Frontiers of Pandora</h5>
 											</div>
@@ -889,7 +1131,7 @@
 									</div>
 									<div class="col mix">
 										<div class="card h-100">
-											<img src="img/videojuegos/marvel-midnight-suns-button-fin-1656022771120.jpg" class="card-img-top img-fluid" alt="image">
+											<img src="https://ik.imagekit.io/popcultfanclub/img/videojuegos/marvel-midnight-suns-button-fin-1656022771120.jpg?tr=w-200" class="card-img-top img-fluid" alt="image">
 											<div class="card-body">
 												<h5 class="card-title display-6 fw-bold fs-6">Marvel’s Midnight Suns</h5>
 											</div>
@@ -900,7 +1142,7 @@
 									</div>
 									<div class="col mix">
 										<div class="card h-100">
-											<img src="img/videojuegos/mortal-kombat-onslaught-button-00-1666108640007.jpg" class="card-img-top img-fluid" alt="image">
+											<img src="https://ik.imagekit.io/popcultfanclub/img/videojuegos/mortal-kombat-onslaught-button-00-1666108640007.jpg?tr=w-200" class="card-img-top img-fluid" alt="image">
 											<div class="card-body">
 												<h5 class="card-title display-6 fw-bold fs-6">Mortal Kombat: Onslaught</h5>
 											</div>
@@ -911,7 +1153,7 @@
 									</div>
 									<div class="col mix">
 										<div class="card h-100">
-											<img src="img/videojuegos/moving-out-2-button-1-1661279287440.jpg" class="card-img-top img-fluid" alt="image">
+											<img src="https://ik.imagekit.io/popcultfanclub/img/videojuegos/moving-out-2-button-1-1661279287440.jpg?tr=w-200" class="card-img-top img-fluid" alt="image">
 											<div class="card-body">
 												<h5 class="card-title display-6 fw-bold fs-6">Moving Out 2</h5>
 											</div>
@@ -922,7 +1164,7 @@
 									</div>
 									<div class="col mix">
 										<div class="card h-100">
-											<img src="img/videojuegos/naruto-x-boruto-button-1677192668935.jpg" class="card-img-top img-fluid" alt="image">
+											<img src="https://ik.imagekit.io/popcultfanclub/img/videojuegos/naruto-x-boruto-button-1677192668935.jpg?tr=w-200" class="card-img-top img-fluid" alt="image">
 											<div class="card-body">
 												<h5 class="card-title display-6 fw-bold fs-6">Naruto X Boruto Ultimate Ninja Storm Connections</h5>
 											</div>
@@ -933,7 +1175,7 @@
 									</div>
 									<div class="col mix">
 										<div class="card h-100">
-											<img src="img/videojuegos/super-bomerman-r2-button-1656434888990.jpg" class="card-img-top img-fluid" alt="image">
+											<img src="https://ik.imagekit.io/popcultfanclub/img/videojuegos/super-bomerman-r2-button-1656434888990.jpg?tr=w-200" class="card-img-top img-fluid" alt="image">
 											<div class="card-body">
 												<h5 class="card-title display-6 fw-bold fs-6">Super Bomberman R 2</h5>
 											</div>
@@ -987,8 +1229,10 @@
 				
 			</div>
 		</main>
+		-->
 	
-		<footer class="text-white-50 p-4">
+	
+		<footer class="text-bg-dark p-4">
 			<i class="bi bi-c-circle-fill" style="font-size: 2rem;"></i>
 			<h4 class="fw-bold pt-2">Comunidad de Fans</h4>
 			<p class="fst-italic">La comunidad para verdaderos fanáticos como tú.</p>
@@ -1004,15 +1248,16 @@
 				</noscript>
 			</p>
 		</footer>
+	
 		
 		<!-- includeHTML - Loading HTML parts via HTML tag (pure js): https://github.com/xmoonlight/includeHTML -->
 		<script src="https://cdn.jsdelivr.net/gh/xmoonlight/includeHTML@master/includeHTML.js"></script>
 		
 		<!-- Bootstrap JS -->
-		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
 		
 		<!-- jQuery 1.7.2+ or Zepto.js 1.0+ -->
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 		
 		<!-- Magnific Popup core JS file -->
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
@@ -1020,18 +1265,35 @@
 		<!-- MixItUp 3.3.1 -->
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/mixitup/3.3.1/mixitup.min.js"></script>
 		
-		<script type="text/javascript">
+		<script>
 		
 			$(document).ready(function() {
 			
 				var containerEl = document.querySelector('.titles');
 				
-				var mixer = mixitup(containerEl);
-			
-				$(".nav .nav-link").on("click", function(){
-					$(".nav").find(".active").removeClass("active").attr('disabled', false);
-						$(this).addClass("active").attr('disabled', true);
+				var mixer = mixitup(containerEl, {
+					controls: {
+						toggleLogic: 'or'
+					}
 				});
+				
+				$(".list-group-item").click(function(){
+					$(this).toggleClass("active");
+				});
+				
+				$(".category-reset-button").click(function(){
+					$("#CategoryModal .list-group-item").removeClass("active");
+				});
+
+				$(".date-reset-button").click(function(){
+					$("#DateModal .list-group-item").removeClass("active");
+				});
+				
+				
+				//$(".nav .nav-link").on("click", function(){
+				//	$(".nav").find(".active").removeClass("active").attr('disabled', false);
+				//		$(this).addClass("active").attr('disabled', true);
+				//});
 				
 				$.magnificPopup.close(); // Close popup that is currently opened (shorthand)
 				
