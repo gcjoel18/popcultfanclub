@@ -327,6 +327,7 @@
 					<div class="col mix categoria-eventos fecha-agosto" data-src="data/eventos/comiccon.html"></div>
 				</div>
 			</div>
+			<div id="noItemsFoundMessage"><p>No se encontraron títulos con los criterios seleccionados.</p></div>
 		</main>
 		
 		<!--
@@ -1260,6 +1261,29 @@
 			$(document).ready(function() {
 			
 				var containerEl = document.querySelector('.titles');
+				
+				// ## 1 - hide alert message by deafult 
+				var noItemsFoundMessage = document.getElementById("noItemsFoundMessage");
+				noItemsFoundMessage.style.display = "none";
+
+				//  MIXITUP 3 plugin settings
+				    mixitup('.titles', {   
+					  // ## 2 - callbacks onMixEnd 
+					 callbacks: {
+					 onMixEnd: function(state){
+					   // ## 3 - hasFailed true? show alert
+					   if(state.hasFailed){  
+					      noItemsFoundMessage.style.display = "block";
+					      alert("No items found");
+					   }
+					   // ## 3 - hasFailed false? hide alert
+					   else{
+					      noItemsFoundMessage.style.display = "none";
+					      alert("Items found");
+					   }
+					 },
+
+				      }, //end of callback
 				
 				var mixer = mixitup(containerEl);
 				
