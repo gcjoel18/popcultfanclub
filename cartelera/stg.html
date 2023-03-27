@@ -1266,23 +1266,22 @@
 				noItemsFoundMessage.style.display = "none";
 
 				//  MIXITUP 3 plugin settings
-				    mixitup('.titles', {   
-					  // ## 2 - callbacks onMixEnd 
-					 callbacks: {
-					 onMixEnd: function(state){
-					   // ## 3 - hasFailed true? show alert
-					   if(state.hasFailed){  
-					      noItemsFoundMessage.style.display = "block";
-					      alert("No items found");
-					   }
-					   // ## 3 - hasFailed false? hide alert
-					   else{
-					      noItemsFoundMessage.style.display = "none";
-					      alert("Items found");
-					   }
-					 },
-
-				      }, //end of callback
+				mixitup('.titles', {   
+				// ## 2 - callbacks onMixEnd 
+					callbacks: {
+						onMixEnd: function(state){
+				// ## 3 - hasFailed true? show alert
+						if(state.hasFailed){  
+							noItemsFoundMessage.style.display = "block";
+							alert("No items found");
+						}
+				// ## 3 - hasFailed false? hide alert
+						else{
+							noItemsFoundMessage.style.display = "none";
+						alert("Items found");
+						}
+					},
+				}, //end of callback
 				
 				//var mixer = mixitup(containerEl, {
 				//	controls: {
