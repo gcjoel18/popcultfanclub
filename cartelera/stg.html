@@ -195,6 +195,7 @@
 			<div class="modal-dialog modal-sm modal-dialog-centered">
 				<div class="modal-content">					
 					<div class="list-group list-group-flush rounded">
+						<button type="button" class="list-group-item list-group-item-action fw-bold text-uppercase position-relative" data-bs-dismiss="modal" data-filter="all">Todo</button>
 						<button type="button" class="list-group-item list-group-item-action fw-bold text-uppercase position-relative" data-bs-dismiss="modal" data-filter=".categoria-anime-series">Anime (Series)</button>
 						<button type="button" class="list-group-item list-group-item-action fw-bold text-uppercase position-relative" data-bs-dismiss="modal" data-filter=".categoria-anime-peliculas">Anime (Películas)</button>
 						<button type="button" class="list-group-item list-group-item-action fw-bold text-uppercase position-relative" data-bs-dismiss="modal" data-filter=".categoria-series">Series</button>
@@ -212,6 +213,7 @@
 			<div class="modal-dialog modal-sm modal-dialog-centered">
 				<div class="modal-content">
 					<div class="list-group list-group-flush rounded">
+						<button type="button" class="list-group-item list-group-item-action fw-bold text-uppercase position-relative" data-bs-dismiss="modal" data-filter="all">Todo</button>
 						<button type="button" class="list-group-item list-group-item-action fw-bold text-uppercase position-relative" data-bs-dismiss="modal" data-filter=".fecha-ya-disponible">Ya Disponible</button>
 						<button type="button" class="list-group-item list-group-item-action fw-bold text-uppercase position-relative" data-bs-dismiss="modal" data-filter=".fecha-en-emision">En emisión</button>
 						<button type="button" class="list-group-item list-group-item-action fw-bold text-uppercase position-relative" data-bs-dismiss="modal" data-filter=".fecha-marzo">Marzo</button>
@@ -1261,27 +1263,6 @@
 				var containerEl = document.querySelector('.titles');
 				
 				var mixer = mixitup(containerEl);
-				
-				var noItemsFoundMessage = document.getElementById("noItemsFoundMessage");
-				noItemsFoundMessage.style.display = "none";
-
-				//  MIXITUP 3 plugin settings
-				mixitup('.titles', {   
-				// ## 2 - callbacks onMixEnd 
-					callbacks: {
-						onMixEnd: function(state){
-				// ## 3 - hasFailed true? show alert
-						if(state.hasFailed){  
-							noItemsFoundMessage.style.display = "block";
-							alert("No items found");
-						}
-				// ## 3 - hasFailed false? hide alert
-						else{
-							noItemsFoundMessage.style.display = "none";
-						alert("Items found");
-						}
-					},
-				}, //end of callback
 				
 				//var mixer = mixitup(containerEl, {
 				//	controls: {
